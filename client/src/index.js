@@ -2,11 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from "react-router-dom";
+import { StoreProvider } from "./store/store";
+import { initialState, userReducer } from "./store/userreducer";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <StoreProvider
+        initialState={initialState}
+        reducer={userReducer}
+      >
+        <App />
+      </StoreProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
